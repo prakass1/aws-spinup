@@ -1,0 +1,10 @@
+---
+ - name: Provision an EC2 Instance
+   hosts: ec2_servers
+   connection: local
+   tags: provisioning
+   vars_files:
+       - vars/ec2_configs.yml
+   roles:
+       - common
+       - spinup

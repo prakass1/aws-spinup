@@ -1,0 +1,7 @@
+---
+instance_type: t2.micro
+security_group: webserver # Change the security group name here
+image: ami-83fd4df0 # Change the AMI, from which you want to launch the server
+region: eu-west-1 # Change the Region
+keypair: jupiter2016 # Change the keypair name
+count: 1
