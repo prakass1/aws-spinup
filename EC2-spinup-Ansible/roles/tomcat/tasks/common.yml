@@ -1,0 +1,5 @@
+---
+- name: create base installation directory
+  file: path={{ app_base_install_dir }} mode=0755 state=directory
+- name: create logs directory
+  file: path={{ app_base_logs_dir }} mode=0755 state=directory

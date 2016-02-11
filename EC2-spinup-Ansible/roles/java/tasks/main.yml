@@ -1,0 +1,14 @@
+---
+
+- name: create java directory
+  file: path={{ app_base_install_dir }}/{{ app_name }}/java mode=0755 state=directory
+
+#Java Install
+- name: offline install | copy and extract java
+  unarchive: src={{ java_installer_path }} dest={{ app_base_install_dir}}/{{ app_name }}/java/ mode=0755 creates={{ app_base_install_dir}}/{{ app_name }}/java/{{ java_version }}/bin/java
+  when: not java_online_install
+
+
+#java symlink
+- name: create symlink to java installation
+  file: src={{ app_base_install_dir}}/{{ app_name }}/java/{{ java_version }} path={{ app_base_install_dir}}/{{ app_name }}/java/jre state=link force=yes

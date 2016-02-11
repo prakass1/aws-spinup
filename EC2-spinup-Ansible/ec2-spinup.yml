@@ -1,10 +1,9 @@
 ---
- - name: Provision an EC2 Instance
-   hosts: ec2_servers
-   connection: local
-   tags: provisioning
+ - hosts: webserver
+   become: root
    vars_files:
        - vars/ec2_configs.yml
    roles:
        - common
-       - spinup
+       - java
+       - tomcat

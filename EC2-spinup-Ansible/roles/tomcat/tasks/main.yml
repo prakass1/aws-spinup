@@ -1,0 +1,9 @@
+---
+# tomcat Install
+- name: offline install | copy and extract tomcat
+  unarchive: src={{ tomcat_installer_path }} dest={{ app_base_install_dir }}/{{ app_name }} copy=yes mode=0755 creates={{ app_base_install_dir }}/{{ app_name }}/bin/startup.sh
+  when: not tomcat_online_install
+
+# Removes default vanilla tomcat applications to keep it clean
+- name: deletes  directory
+  shell: rm -rf {{ app_base_install_dir }}/{{ app_name }}/webapps/*manager

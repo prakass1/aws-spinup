@@ -1,7 +1,17 @@
 ---
-instance_type: t2.micro
-security_group: webserver # Change the security group name here
-image: ami-83fd4df0 # Change the AMI, from which you want to launch the server
-region: eu-west-1 # Change the Region
-keypair: jupiter2016 # Change the keypair name
-count: 1
+app_user: wlapp
+app_group: wlapp
+app_base_install_dir: /apps
+app_name: jupiter
+
+#tomcat
+tomcat_online_install: false
+tomcat_installer_path: /opt/deployment_files/software_library/tomcat/apache-tomcat-7.0.32.tar.gz
+
+# JAVA
+java_online_install: false
+java_installer_path: /opt/deployment_files/software_library/java/jre1.6.0_30.tar.gz
+java_version: jre1.6.0_30
+
+# JAVA
+app_jvm_args: -server -Xmx4096m -Xms4096m -XX:PermSize=256m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/apps/jupiter/logs/ -Dcom.sun.management.jmxremote=true -d64
